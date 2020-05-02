@@ -3,16 +3,16 @@ on:
   schedule:
     - cron: '0 0 * * *'
   push:
-    branches:
-      - master
-      - docker-support
-      - website-fixes
+    branches: [ master, ghdemo ]
   pull_request:
     branches: [ master ]
 
 jobs:
-  CONTAINER_BUILD:
-    runs-on: ubuntu-latest
+  container-build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-16.04, ubuntu-18.04]
     steps:
     - uses: actions/checkout@v2
     
