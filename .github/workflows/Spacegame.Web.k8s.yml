@@ -79,6 +79,12 @@ jobs:
         cluster-name: ${{ env.CLUSTER_NAME }}
         resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
     
+    # CIS Kubernetes Benchmark
+    - run: |
+        kubectl-enter aks-agentpool-76920337-vmss000000
+        docker run --rm -v `pwd`:/host aquasec/kube-bench:latest install
+        ./kube-bench node
+
     # Create namespace if doesn't exist
     - run: |
         kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
