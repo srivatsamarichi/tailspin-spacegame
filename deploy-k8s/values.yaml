@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: darquewarrior.azureacr.io/tailspinspacegameweb
-  tag: latest
+  repository: ${{ secrets.ACR }}/tailspinspacegameweb
+  tag: ${{ github.run_number }}
   pullPolicy: Always
 
 imagePullSecrets: []
