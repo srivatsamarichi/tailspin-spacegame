@@ -80,9 +80,9 @@ jobs:
         resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
     
     # Create namespace if doesn't exist
-    - run: |
-        kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
-      name: Create namespace if doesn't exist
+    #- run: |
+    #    kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
+    #  name: Create namespace if doesn't exist
     
     # Create imagepullsecret for Azure Container registry (ACR)
     - uses: azure/k8s-create-secret@v1
