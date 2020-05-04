@@ -105,7 +105,7 @@ jobs:
     
     - name: Helm Install
       run: |
-        helm install -name tailspinplayground ./deploy-k8s 
+        helm install --name tailspinplayground ./deploy-k8s 
     
     # Deploy app to AKS
     #- uses: azure/k8s-deploy@v1
