@@ -22,7 +22,7 @@ spec:
     {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          image: darquewarrior.azurecr.io/tailspinspacegameweb
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: Always
           ports:
             - name: http
