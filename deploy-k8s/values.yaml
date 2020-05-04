@@ -6,10 +6,10 @@ replicaCount: 1
 
 image:
   repository: ${{ secrets.ACR }}/tailspinspacegameweb
-  tag: ${{ github.run_number }}
-  pullPolicy: IfNotPresent
+  tag: latest
+  pullPolicy: Always
 
-imagePullSecrets: []
+imagePullSecrets: ${{ env.REGISTRY_NAME }}-registry-connection
 nameOverride: ""
 fullnameOverride: ""
 
