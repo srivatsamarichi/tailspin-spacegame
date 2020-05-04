@@ -105,7 +105,8 @@ jobs:
     
     - name: Helm Install
       run: |
-        helm install playground ./deploy-k8s --dry-run
+        helm uninstall playground
+        helm install playground ./deploy-k8s
     
     # Deploy app to AKS
     #- uses: azure/k8s-deploy@v1
