@@ -105,7 +105,6 @@ jobs:
     
     - name: Helm Install
       run: |
-        helm uninstall playground
         helm install playground ./deploy-k8s
     
     # Deploy app to AKS
