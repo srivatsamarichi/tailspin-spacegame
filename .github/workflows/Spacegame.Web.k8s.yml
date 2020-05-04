@@ -81,12 +81,8 @@ jobs:
     
     # CIS Kubernetes Benchmark
     - run: |
-        curl -LO https://github.com/kvaps/kubectl-node-shell/raw/master/kubectl-node_shell
-        chmod +x ./kubectl-node_shell
-        sudo mv ./kubectl-node_shell /usr/local/bin/kubectl-node_shell
-        kubectl node-shell aks-agentpool-76920337-vmss000000
         docker run --rm -v `pwd`:/host aquasec/kube-bench:latest install
-        ./kube-bench node
+        ./kube-bench aks-agentpool-76920337-vmss000000
 
     # Create namespace if doesn't exist
     - run: |
