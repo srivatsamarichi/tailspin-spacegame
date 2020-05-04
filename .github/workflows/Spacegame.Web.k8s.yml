@@ -12,7 +12,7 @@ env:
   REGISTRY_NAME: darquewarrior
   CLUSTER_NAME: playground
   CLUSTER_RESOURCE_GROUP: testing
-  NAMESPACE: default
+  NAMESPACE: playground
 
 jobs:
   Container_Build:
@@ -80,9 +80,9 @@ jobs:
         resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
     
     # Create namespace if doesn't exist
-    #- run: |
-    #    kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
-    #  name: Create namespace if doesn't exist
+    - run: |
+        kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
+      name: Create namespace if doesn't exist
     
     # Create imagepullsecret for Azure Container registry (ACR)
     - uses: azure/k8s-create-secret@v1
@@ -105,7 +105,7 @@ jobs:
     
     - name: Helm Install
       run: |
-        helm install playground28 ./deploy-k8s --set image=${{ secrets.ACR }}/tailspinspacegameweb:${{ github.run_number }}
+        helm install playground8 ./deploy-k8s -n playground --set image=${{ secrets.ACR }}/tailspinspacegameweb:${{ github.run_number }}
     
     # Deploy app to AKS
     #- uses: azure/k8s-deploy@v1
