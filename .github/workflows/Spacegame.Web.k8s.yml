@@ -103,14 +103,18 @@ jobs:
         helm-version: 'latest' 
       id: bake
     
+    - name: Helm Install
+      run: |
+        helm install -name tailspinplayground ./deploy-k8s 
+    
     # Deploy app to AKS
-    - uses: azure/k8s-deploy@v1
-      name: Deploy app to AKS
-      with:
-        manifests: ${{ steps.bake.outputs.manifestsBundle }}
-           #manifests/deployment.yml
-        images: |
-          ${{ secrets.ACR }}/tailspinspacegameweb:${{ github.run_number }}
-        imagepullsecrets: |
-          ${{ env.REGISTRY_NAME }}-registry-connection
-        namespace: ${{ env.NAMESPACE }}
+    #- uses: azure/k8s-deploy@v1
+    #  name: Deploy app to AKS
+    #  with:
+    #    manifests: ${{ steps.bake.outputs.manifestsBundle }}
+    #       #manifests/deployment.yml
+    #    images: |
+    #      ${{ secrets.ACR }}/tailspinspacegameweb:${{ github.run_number }}
+    #    imagepullsecrets: |
+    #      ${{ env.REGISTRY_NAME }}-registry-connection
+    #    namespace: ${{ env.NAMESPACE }}
