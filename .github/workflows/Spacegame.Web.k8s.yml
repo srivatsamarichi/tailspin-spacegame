@@ -105,7 +105,7 @@ jobs:
     
     - name: Helm Install
       run: |
-        helm install playground ./deploy-k8s -n playground --set image=darquewarrior.azurecr.io/tailspinspacegameweb:${{ github.run_number }}
+        helm install playground-test ./deploy-k8s -n playground --set image=darquewarrior.azurecr.io/tailspinspacegameweb:${{ github.run_number }}
     
     # Deploy app to AKS
     #- uses: azure/k8s-deploy@v1
