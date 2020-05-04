@@ -90,7 +90,7 @@ jobs:
     - run: |
         kubectl node-shell aks-agentpool-76920337-vmss000000
         docker run --rm -v `pwd`:/host aquasec/kube-bench:latest install
-        ./kube-bench node
+        ./kube-bench --help
       name: Run CIS Kubernetes Benchmark
       
     # Create namespace if doesn't exist
