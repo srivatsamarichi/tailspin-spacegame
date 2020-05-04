@@ -9,7 +9,7 @@ image:
   tag: latest
   pullPolicy: Always
 
-imagePullSecrets: ${{ env.REGISTRY_NAME }}-registry-connection
+imagePullSecrets: [${{ env.REGISTRY_NAME }}-registry-connection]
 nameOverride: ""
 fullnameOverride: ""
 
