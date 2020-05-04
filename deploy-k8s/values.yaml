@@ -5,11 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: ${{ secrets.ACR }}/tailspinspacegameweb
+  repository: darquewarrior.azureacr.io/tailspinspacegameweb
   tag: latest
   pullPolicy: Always
 
-imagePullSecrets: [${{ env.REGISTRY_NAME }}-registry-connection]
+imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
