@@ -5,7 +5,8 @@
 name: OSSAR
 
 on:
-  push:
+    workflow_dispatch:
+ #   push:
 
 jobs:
   OSSAR-Scan:
