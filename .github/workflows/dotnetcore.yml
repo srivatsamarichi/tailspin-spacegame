@@ -6,7 +6,7 @@ on:
       - docker-support
       - website-fixes
     paths-ignore:
-        - /**
+        - '**'
   pull_request:
     branches: [ master ]
 

@@ -5,7 +5,7 @@ on:
   push:
     branches: [ master, ghdemo ]
     paths-ignore:
-        - /**
+        - '**'
   pull_request:
     branches: [ master ]
 

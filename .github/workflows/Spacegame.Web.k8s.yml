@@ -5,7 +5,7 @@ on:
   push:
     branches: [master, k8s]
     paths-ignore:
-        - /**
+        - '**'
   pull_request:
     branches: [ master ]
 
