@@ -2,6 +2,8 @@ name: Spacegame.Web.Docker
 on:
   push:
     branches: [master]
+    paths-ignore:
+        - /**
   pull_request:
     branches: [ master ]
 
