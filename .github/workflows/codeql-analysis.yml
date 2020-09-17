@@ -1,10 +1,9 @@
 name: "CodeQL"
 
 on:
-  workflow_dispatch:
-#  push:
-#  schedule:
-#    - cron: '0 21 * * 5'
+  push:
+  schedule:
+    - cron: '0 21 * * 5'
 
 jobs:
   CodeQL-Build:
