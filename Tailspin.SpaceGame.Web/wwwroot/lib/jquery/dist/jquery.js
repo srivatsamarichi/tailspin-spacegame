@@ -1,3 +1,38 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Grenston 
+srivatsamarichi
+/
+tailspin-spacegame-web
+Template
+forked from MicrosoftDocs/mslearn-tailspin-spacegame-web
+1
+1
+11.7k
+Code
+Issues
+Pull requests
+1
+Actions
+Projects
+2
+Wiki
+Security
+Insights
+tailspin-spacegame-web/Tailspin.SpaceGame.Web/wwwroot/lib/jquery/dist/jquery.js /
+@tpetchel
+tpetchel Initial
+Latest commit 1697047 on Mar 23, 2019
+ History
+ 1 contributor
+10364 lines (8414 sloc)  265 KB
+  
 /*!
  * jQuery JavaScript Library v3.3.1
  * https://jquery.com/
@@ -10362,3 +10397,15 @@ if ( !noGlobal ) {
 
 return jQuery;
 } );
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
