@@ -48,13 +48,15 @@ jobs:
     needs: BUILD
     steps:
     
+    - uses: actions/checkout@v2
+    
     - name: Download a Build Artifact
-      uses: actions/download-artifact@v2.0.5
+      uses: actions/download-artifact@v2
       with:
         name: space-web
-        path: ${{github.workspace}}
     
-    - run: ls
+    - name: Display structure of downloaded files
+      run: ls -R
     
     - name: Azure WebApp
       uses: Azure/webapps-deploy@v2
