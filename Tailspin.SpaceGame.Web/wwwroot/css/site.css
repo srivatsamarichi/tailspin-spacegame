@@ -16,7 +16,7 @@ section {
 
 .intro {
   height: 350px;
-  background-color: #666;
+  background-color:#0078D7;
   background-image: url("/images/space-background.svg");
   background-size: 1440px;
   background-position: center top;
@@ -46,7 +46,7 @@ section {
   font-weight: bold; }
 
 .screens {
-  background: #666; }
+  background: #0078D7; }
   .screens ul {
     padding: 0; }
     .screens ul li {
@@ -79,7 +79,7 @@ section {
   margin: 1rem;
   margin-top: 0; }
   .leaderboard .leader-nav .nav-buttons h4 {
-    background: #333;
+    background: black;
     color: white;
     padding: 1rem;
     margin: 0;
@@ -89,7 +89,7 @@ section {
     padding: .5rem; }
 
 .leaderboard .leader-scores .high-score:nth-child(1) {
-  background: #333;
+  background: black;
   color: white;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
