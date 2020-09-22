@@ -56,8 +56,8 @@ jobs:
       uses: actions/download-artifact@v2.0.5
       with:
         name: space-web
-        path: .
-    
+        path: ${{github.workspace}}
+    - run: ls
     - name: Azure WebApp
       uses: Azure/webapps-deploy@v2
       with:
