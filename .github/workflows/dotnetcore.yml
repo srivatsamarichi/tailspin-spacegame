@@ -41,9 +41,10 @@ jobs:
         name: space-web
         path: ./Tailspin.SpaceGame.Web/obj/Release/netcoreapp3.1
     
+    - run: ls -R
+    
     - name: Azure WebApp
       uses: Azure/webapps-deploy@v2
       with:
         app-name: heyyworld
         publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
-        package: ./space-web
