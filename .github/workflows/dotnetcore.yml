@@ -47,11 +47,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: BUILD
     steps:
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
     - name: Download a Build Artifact
       uses: actions/download-artifact@v2.0.5
       with:
@@ -62,3 +57,4 @@ jobs:
       uses: Azure/webapps-deploy@v2
       with:
         app-name: heyyworld
+        publish-profile: ${{ secrets.azureWebAppPublishProfile }}
