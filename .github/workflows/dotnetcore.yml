@@ -52,6 +52,9 @@ jobs:
     
     - name: Download a Build Artifact
       uses: actions/download-artifact@v2
+      with:
+        name: space-web
+        path: ${{github.workspace}}\stagingdir
  
     - name: Extract Artifact
       run: expand-archive -path '*.zip' -destinationpath '.\webapp'
