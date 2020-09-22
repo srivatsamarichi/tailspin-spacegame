@@ -6,8 +6,8 @@ name: OSSAR Analysis
 
 on:
   workflow_dispatch:
-  push:
-    branches: master
+#  push:
+#    branches: master
 
 jobs:
   OSSAR-Scan:
