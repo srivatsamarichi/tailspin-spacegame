@@ -24,7 +24,7 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet publish -c Release --no-restore
 
     - name: Test
       run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$GITHUB_WORKSPACE/TestResults/Coverage/      
@@ -39,7 +39,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: space-web
-        path: ./Tailspin.SpaceGame.Web/obj/Release/netcoreapp3.1
+        path: ./Tailspin.SpaceGame.Web/bin/Release/netcoreapp3.1/publish
     
 #---------------
   DEPLOY:
@@ -54,13 +54,10 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: space-web
-        path: ${{github.workspace}}\stagingdir
- 
-    - run: ls ${{github.workspace}}\stagingdir
-    
+        path: ${{github.workspace}}
+     
     - name: Azure WebApp
       uses: Azure/webapps-deploy@v2
       with:
         app-name: heyyworld
         publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
-        package: ${{github.workspace}}\stagingdir
