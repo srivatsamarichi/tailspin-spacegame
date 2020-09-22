@@ -39,7 +39,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: space-web
-        path: ./Tailspin.SpaceGame.Web/bin/Release/netcoreapp3.1/publish
+        path: ${{github.workspace}}/Tailspin.SpaceGame.Web/bin/Release/netcoreapp3.1/publish
     
 #---------------
   DEPLOY:
