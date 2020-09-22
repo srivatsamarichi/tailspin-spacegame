@@ -36,7 +36,7 @@ jobs:
     #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v2
       with:
         name: space-web
         path: ./Tailspin.SpaceGame.Web/obj/Release/netcoreapp3.1
