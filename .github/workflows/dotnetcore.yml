@@ -62,4 +62,4 @@ jobs:
       uses: Azure/webapps-deploy@v2
       with:
         app-name: heyyworld
-        package: space-web
+        package: space-web.zip
