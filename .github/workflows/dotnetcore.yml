@@ -40,7 +40,7 @@ jobs:
         name: space-web
         path: ./Tailspin.SpaceGame.Web/obj/Release/netcoreapp3.1
 
-#----------------
+#---------------
   DEPLOY:
     name: Deploy
     runs-on: ubuntu-latest
