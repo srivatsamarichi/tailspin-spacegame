@@ -52,9 +52,7 @@ jobs:
     
     - name: Download a Build Artifact
       uses: actions/download-artifact@v2
-      with:
-        name: space-web
-    
+ 
     - name: Display structure of downloaded files
       run: ls -R
     
