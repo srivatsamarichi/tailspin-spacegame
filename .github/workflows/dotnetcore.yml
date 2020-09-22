@@ -60,4 +60,4 @@ jobs:
       uses: Azure/webapps-deploy@v2
       with:
         app-name: heyyworld
-        publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+        publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
