@@ -53,6 +53,7 @@ jobs:
         name: space-web
         path: ${{github.workspace}}/space-web
     - run: ls
+      working-directory: space-web
     - name: Azure WebApp
       uses: Azure/webapps-deploy@v2
       with:
