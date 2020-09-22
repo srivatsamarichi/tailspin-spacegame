@@ -56,9 +56,7 @@ jobs:
         name: space-web
         path: ${{github.workspace}}\stagingdir
  
-    - name: Extract Artifact
-      run: expand-archive -path ${{github.workspace}}\stagingdir\*.zip -destinationpath '.\webapp'
-      shell: pwsh
+    - run: ls ${{github.workspace}}\stagingdir
     
     - name: Azure WebApp
       uses: Azure/webapps-deploy@v2
