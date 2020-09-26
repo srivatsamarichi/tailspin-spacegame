@@ -13,7 +13,7 @@ on:
 env:
   REGISTRY_NAME: darquewarrior
   CLUSTER_NAME: playground
-  CLUSTER_RESOURCE_GROUP: testing
+  CLUSTER_RESOURCE_GROUP: Playground
   NAMESPACE: default
 
 jobs:
