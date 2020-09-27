@@ -19,7 +19,7 @@ jobs:
     - name: Docker Login
       run: |
         #docker login docker.pkg.github.com -u srivatsamarichi -p ${{ secrets.GITHUB_TOKEN }}
-        docker login ghcr.io -u srivatsamarichi -p ${{ secrets.GITHUB_TOKEN }}
+        docker login ghcr.io -u srivatsamarichi --password-stdin
     
     - name: Install Trivy
       run: |
