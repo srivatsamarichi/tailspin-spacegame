@@ -3,9 +3,7 @@ on:
   schedule:
     - cron: '0 0 * * *'
   push:
-    branches: [ master, ghdemo ]
-    paths-ignore:
-        - '**'
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -18,9 +16,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: docker login to github packages
+    - name: Docker Login
       run: |
-        docker login docker.pkg.github.com -u srivatsamarichi -p ${{ secrets.GITHUB_TOKEN }}
+        #docker login docker.pkg.github.com -u srivatsamarichi -p ${{ secrets.GITHUB_TOKEN }}
+        docker login ghcr.io -u srivatsamarichi --password-stdin
     
     - name: Install Trivy
       run: |
@@ -36,9 +35,11 @@ jobs:
       run: |
         docker build -f $GITHUB_WORKSPACE/Tailspin.SpaceGame.Web/Dockerfile -t tailspinspacegameweb:${{ github.run_number }} .
         trivy --exit-code 0 --severity MEDIUM,HIGH tailspinspacegameweb:${{ github.run_number }}
-        docker tag tailspinspacegameweb:${{ github.run_number }} docker.pkg.github.com/srivatsamarichi/tailspin-spacegame-web/tailspinspacegameweb:${{ github.run_number }}
+        #docker tag tailspinspacegameweb:${{ github.run_number }} docker.pkg.github.com/srivatsamarichi/tailspin-spacegame-web/tailspinspacegameweb:${{ github.run_number }}
+        docker tag tailspinspacegameweb:${{ github.run_number }} ghcr.io/srivatsamarichi/tailspin-spacegame-web/tailspinspacegameweb:${{ github.run_number }}
    
     - name: push image
       run: |
-        docker push docker.pkg.github.com/srivatsamarichi/tailspin-spacegame-web/tailspinspacegameweb:${{ github.run_number }}
+        #docker push docker.pkg.github.com/srivatsamarichi/tailspin-spacegame-web/tailspinspacegameweb:${{ github.run_number }}
+        docker push ghcr.io/srivatsamarichi/tailspin-spacegame-web/tailspinspacegameweb:${{ github.run_number }}
     

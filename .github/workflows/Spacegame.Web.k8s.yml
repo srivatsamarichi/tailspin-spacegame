@@ -1,11 +1,10 @@
 name: Spacegame.Web.k8s
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
   push:
     branches: [master, k8s]
-    paths-ignore:
-        - '**'
   pull_request:
     branches: [ master ]
 
@@ -13,7 +12,7 @@ on:
 env:
   REGISTRY_NAME: darquewarrior
   CLUSTER_NAME: playground
-  CLUSTER_RESOURCE_GROUP: testing
+  CLUSTER_RESOURCE_GROUP: Playground
   NAMESPACE: default
 
 jobs:
