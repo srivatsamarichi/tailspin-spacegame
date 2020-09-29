@@ -18,6 +18,6 @@ The team builds websites to support new game titles. These websites provide info
 
 The Space Game website is a .NET Core app written in C# that's deployed to Linux. The website isn't finished yet, but here's what it looks like right now:
 
-![](https://docs.microsoft.com/en-us/learn/azure-devops/assess-your-development-process/media/2-space-game-top.png)
+![](media/App_Overview.png)
 
 
