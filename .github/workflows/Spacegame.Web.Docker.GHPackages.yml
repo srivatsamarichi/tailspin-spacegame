@@ -1,4 +1,4 @@
-name: Spacegame.Web.Docker.GHPackages
+name: Spacegame.Web.Docker
 on:
   schedule:
     - cron: '0 0 * * *'
