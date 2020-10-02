@@ -4,9 +4,7 @@ on:
   #schedule:
   #  - cron: '0 0 * * *'
   push:
-    branches: [master, k8s]
-  pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # Environment variables available to all jobs and steps in this workflow
 env:
