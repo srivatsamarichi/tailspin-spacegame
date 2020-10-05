@@ -27,6 +27,7 @@ steps:
   displayName: 'Test the project'
   inputs:
     command: 'test'
+    arguments: --configuration $(BuildConfiguration)
     testRunTitle: 'Spacegame'
 
 - task: DotNetCoreCLI@2
