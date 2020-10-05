@@ -4,6 +4,8 @@ on:
   #schedule:
   #  - cron: '0 0 * * *'
   push:
+    paths-ignore:
+      - '**'
     branches: [master]
 
 # Environment variables available to all jobs and steps in this workflow
