@@ -24,6 +24,11 @@ steps:
     projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    testRunTitle: 'Spacegame'
+
+- task: DotNetCoreCLI@2
   displayName: 'Publish the project'
   inputs:
     command: 'publish'
