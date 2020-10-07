@@ -7,7 +7,8 @@
 ![Spacegame.Web.Docker](https://github.com/srivatsamarichi/tailspin-spacegame-web/workflows/Spacegame.Web.Docker/badge.svg)<br/>
 ![Spacegame.Web](https://github.com/srivatsamarichi/tailspin-spacegame-web/workflows/Spacegame.Web/badge.svg)<br/>
 [![Code Quality Score](https://www.code-inspector.com/project/10935/score/svg)](https://frontend.code-inspector.com/project/10935/dashboard)<br/>
-![Code Grade](https://www.code-inspector.com/project/10935/status/svg)
+![Code Grade](https://www.code-inspector.com/project/10935/status/svg)<br/>
+![Azure App Service](https://vsrm.dev.azure.com/rubdevopson/_apis/public/Release/badge/c53ed56f-c130-470b-a6ae-3c4a93266530/36/91)
 
 ## Overview
 
