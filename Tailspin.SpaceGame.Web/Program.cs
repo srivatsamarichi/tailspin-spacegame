@@ -5,7 +5,7 @@ namespace TailSpin.SpaceGame.Web
 {
     public class Program
     {
-        public static string ClientSecret = "80c8627f4a4eb83709f501e8228e86204b9c5b8f";
+        public static string ClientSecret = "e1c1de82e17772f043f5dd0cc8f96b33d94e6b04";
         public static string Password = "sri@123";
         public static void Main(string[] args)
         {
