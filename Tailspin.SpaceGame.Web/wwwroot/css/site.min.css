@@ -20,7 +20,7 @@ section {
 
 .intro {
 	height: 350px;
-	background-color: #bb7db8 !important;
+	background-color: #85da92 !important;
 	background-image: url(/images/space-background.svg);
 	background-size: 1440px;
 	background-position: center top;
@@ -57,7 +57,7 @@ section {
 }
 
 .screens {
-	background: #000000
+	background: #85da92
 }
 
 .screens ul {
