@@ -15,7 +15,7 @@ jobs:
           github_token: "${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}"
           ado_organization: "rubdevopson"
           ado_project: "AzureDevOps"
-          ado_area_path: "AzureDevOps\\Product A\\Service A1"
+          ado_area_path: "AzureDevOps"
           ado_iteration_path: "optional_iteration_path\\optional_iteration_path"
           ado_wit: "Product Backlog Item"
           ado_new_state: "New"
