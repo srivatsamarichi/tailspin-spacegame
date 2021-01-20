@@ -3,6 +3,7 @@
 ![Code Grade](https://www.code-inspector.com/project/10935/status/svg)<br/>
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1315e116650345da9177b96c327f7901)](https://app.codacy.com/manual/srivatsams/tailspin-spacegame-web?utm_source=github.com&utm_medium=referral&utm_content=srivatsamarichi/tailspin-spacegame-web&utm_campaign=Badge_Grade_Dashboard)<br/>
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=playgroundgithub&metric=alert_status)](https://sonarcloud.io/dashboard?id=playgroundgithub)<br/>
+![Lint Code Base](https://github.com/srivatsamarichi/tailspin-spacegame/workflows/Lint%20Code%20Base/badge.svg)<br/>
 ![Spacegame.Web.Docker](https://github.com/srivatsamarichi/tailspin-spacegame-web/workflows/Spacegame.Web.Docker/badge.svg)<br/>
 ![Spacegame.Web](https://github.com/srivatsamarichi/tailspin-spacegame-web/workflows/Spacegame.Web/badge.svg)<br/>
 [![Code Quality Score](https://www.code-inspector.com/project/10935/score/svg)](https://frontend.code-inspector.com/project/10935/dashboard)<br/>
