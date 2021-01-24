@@ -59,9 +59,9 @@ jobs:
           JAVASCRIPT_DEFAULT_STYLE: prettier
    
   code-analysis:
-    name: 🧹 Sonar Scan
+    name: 🔆 Sonar Scan
     runs-on: ubuntu-latest
-
+    needs: [build-and-test]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -76,7 +76,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   
   webapp-deploy-sandbox:
-    name: 📦 Webapp Deploy - Sandbox
+    name: 📦 Web App Deploy - Sandbox
     runs-on: ubuntu-latest
     needs: [build-and-test, code-analysis]
     environment: 
@@ -97,7 +97,7 @@ jobs:
         publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
 
   validate-site-sandbox:
-    name: ✔️ Validate Deployment
+    name: ✅ Validate Deployment
     runs-on: ubuntu-latest
     needs: webapp-deploy-sandbox
     
@@ -105,11 +105,7 @@ jobs:
     - name: Check the deployed service URL
       uses: jtalk/url-health-check-action@v1.2
       with:
-        # Check the following URLs one by one sequentially
-        url: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net
-        # Follow redirects, or just report success on 3xx status codes
-        follow-redirect: no # Optional, defaults to "no"
-        # Fail this action after this many failed attempts
-        max-attempts: 3 # Optional, defaults to 1
-        # Delay between retries
-        retry-delay: 5s # Optional, only applicable to max-attempts > 1
+        url: https://heyyworld.azurewebsites.net
+        follow-redirect: no
+        max-attempts: 3 
+        retry-delay: 5s 
