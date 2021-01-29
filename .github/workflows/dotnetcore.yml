@@ -14,6 +14,9 @@ jobs:
   build-and-test:
     name: 🧪 Build and Test
     runs-on: ubuntu-latest
+    environment: 
+      name: AZURE
+      url: https://heyyworld.azurewebsites.net/
     
     strategy:
       fail-fast: false
@@ -82,9 +85,6 @@ jobs:
     name: 📦 Web App Deploy - Sandbox
     runs-on: ubuntu-latest
     needs: [build-and-test, code-analysis, code-ql]
-    environment: 
-      name: SANDBOX
-      url: "https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
     
     steps:
     - name: Download a Build Artifact
@@ -96,7 +96,7 @@ jobs:
     - name: Azure WebApp
       uses: Azure/webapps-deploy@v2
       with:
-        app-name: heyyworld
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
 
   validate-site-sandbox:
