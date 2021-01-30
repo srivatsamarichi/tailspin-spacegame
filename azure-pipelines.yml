@@ -60,7 +60,6 @@ jobs:
     condition: succeeded()
 
 - job: package
-  name: Publish Nuget Packages
   dependsOn: build
   condition: succeeded()
 
@@ -86,8 +85,7 @@ jobs:
       publishVstsFeed: 'c53ed56f-c130-470b-a6ae-3c4a93266530/6d3e3062-8453-4dbe-b44c-951217317e15'
       versioningScheme: byBuildNumber
 
-- job: OSS
-  name: Open Source Security and License compliance
+- job: OSS and License compliance
   dependsOn:
     - build, package
   condition: succeeded()
