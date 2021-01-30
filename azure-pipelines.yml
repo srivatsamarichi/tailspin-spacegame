@@ -61,10 +61,9 @@ stages:
       condition: succeeded()
 
 - stage : package
+  dependsOn: build
   jobs:
   - job: package
-    dependsOn: build
-    condition: succeeded()
     steps:
     - task: NuGetCommand@2
       displayName: 'NuGet package Web'
@@ -89,6 +88,7 @@ stages:
         publishVstsFeed: 'c53ed56f-c130-470b-a6ae-3c4a93266530/6d3e3062-8453-4dbe-b44c-951217317e15'
 
 - stage : OSS
+  dependsOn: package
   jobs:
   - job: oss
     dependsOn:
