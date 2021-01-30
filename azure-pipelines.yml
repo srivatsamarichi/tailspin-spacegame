@@ -66,23 +66,24 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet package Web'
     inputs:
-      command: pack
-      packagesToPack: Tailspin.SpaceGame.Web/Tailspin.SpaceGame.Web.csproj
-      versioningScheme: byBuildNumber
+      command: 'pack'
+      packagesToPack: 'Tailspin.SpaceGame.Web/Tailspin.SpaceGame.Web.csproj'
+      versioningScheme: 'byBuildNumber'
 
   - task: NuGetCommand@2
     displayName: 'NuGet package Test'
     inputs:
-      command: pack
-      packagesToPack: Tailspin.SpaceGame.Web.Tests/Tailspin.SpaceGame.Web.Tests.csproj
-      versioningScheme: byBuildNumber
+      command: 'pack'
+      packagesToPack: 'Tailspin.SpaceGame.Web.Tests/Tailspin.SpaceGame.Web.Tests.csproj'
+      versioningScheme: 'byBuildNumber'
 
   - task: NuGetCommand@2
     displayName: 'NuGet Push'
     inputs:
-      command: push
+      command: 'push'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+      nuGetFeedType: 'internal'
       publishVstsFeed: 'c53ed56f-c130-470b-a6ae-3c4a93266530/6d3e3062-8453-4dbe-b44c-951217317e15'
-      versioningScheme: byBuildNumber
 
 - job: OSS
   dependsOn:
