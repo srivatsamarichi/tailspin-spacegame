@@ -62,6 +62,7 @@ stages:
 
 - stage : package
   dependsOn: build
+  condition: succeeded()
   jobs:
   - job: package
     steps:
@@ -89,12 +90,9 @@ stages:
 
 - stage : OSS
   dependsOn: package
+  condition: succeeded()
   jobs:
   - job: oss
-    dependsOn:
-      - build
-      - package
-    condition: succeeded()
     steps:
     - task: WhiteSource Bolt@20
       inputs:
