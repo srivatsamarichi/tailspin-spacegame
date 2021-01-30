@@ -7,38 +7,92 @@ pool:
 variables:
   buildConfiguration: 'Release'
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
+  ProjectKey: TailspinSpaceGame
+  ProjectName: TailspinSpaceGame
 
-steps:
+jobs:
+- job: build
 
-- task: DotNetCoreCLI@2
-  displayName: 'Restore project dependencies'
-  inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
+  steps:
+  - task: SonarCloudPrepare@1
+    displayName: 'Prepare analysis on SonarCloud'
+    inputs:
+      SonarCloud: 'Srivatsa-SonarCloud'
+      organization: 'srivatsamarichi'
+      scannerMode: 'MSBuild'
+      projectKey: '$(ProjectKey)'
+      projectName: '$(ProjectName)'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Build the project'
-  inputs:
-    command: 'build'
-    arguments: '--no-restore --configuration $(buildConfiguration)'
-    projects: '**/*.csproj'
+  - task: DotNetCoreCLI@2
+    displayName: 'Restore project dependencies'
+    inputs:
+      command: 'restore'
+      projects: '**/*.csproj'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Test the project'
-  inputs:
-    command: 'test'
-    arguments: --configuration $(BuildConfiguration)
-    testRunTitle: 'Spacegame'
+  - task: DotNetCoreCLI@2
+    displayName: 'Build the project'
+    inputs:
+      command: 'build'
+      arguments: '--no-restore --configuration $(buildConfiguration)'
+      projects: '**/*.csproj'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Publish the project'
-  inputs:
-    command: 'publish'
-    projects: '**/*.csproj'
-    publishWebProjects: false
-    arguments: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
-    zipAfterPublish: true
+  - task: SonarCloudAnalyze@1
+    displayName: 'Run Code Analysis'
+  
+  - task: DotNetCoreCLI@2
+    displayName: 'Test the project'
+    inputs:
+      command: 'test'
+      arguments: --configuration $(BuildConfiguration)
+      testRunTitle: 'Spacegame'
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
+  - task: DotNetCoreCLI@2
+    displayName: 'Publish the project'
+    inputs:
+      command: 'publish'
+      projects: '**/*.csproj'
+      publishWebProjects: false
+      arguments: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
+      zipAfterPublish: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    condition: succeeded()
+
+- job: package
+  name: Publish Nuget Packages
+  dependsOn: build
   condition: succeeded()
+
+  steps:
+  - task: NuGetCommand@2
+    displayName: 'NuGet package Web'
+    inputs:
+      command: pack
+      packagesToPack: Tailspin.SpaceGame.Web/Tailspin.SpaceGame.Web.csproj
+      versioningScheme: byBuildNumber
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet package Test'
+    inputs:
+      command: pack
+      packagesToPack: Tailspin.SpaceGame.Web.Tests/Tailspin.SpaceGame.Web.Tests.csproj
+      versioningScheme: byBuildNumber
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet Push'
+    inputs:
+      command: push
+      publishVstsFeed: 'c53ed56f-c130-470b-a6ae-3c4a93266530/6d3e3062-8453-4dbe-b44c-951217317e15'
+      versioningScheme: byBuildNumber
+
+- job: OSS
+  name: Open Source Security and License compliance
+  dependsOn:
+    - build, package
+  condition: succeeded()
+  
+  steps:
+    - task: WhiteSource Bolt@20
+      inputs:
+        cwd: '$(build.sourcesdirectory)'
