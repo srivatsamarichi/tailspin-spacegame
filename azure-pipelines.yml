@@ -12,7 +12,6 @@ variables:
 
 jobs:
 - job: build
-
   steps:
   - task: SonarCloudPrepare@1
     displayName: 'Prepare analysis on SonarCloud'
@@ -87,7 +86,8 @@ jobs:
 
 - job: OSS
   dependsOn:
-    - build, package
+    - build
+    - package
   condition: succeeded()
   
   steps:
