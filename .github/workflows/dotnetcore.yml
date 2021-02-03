@@ -68,7 +68,7 @@ jobs:
   code-ql:
     name: ⭕️ Security Scanning
     runs-on: ubuntu-latest
-    needs: [code-analysis, build-and-test]  
+    needs: [build-and-test]  
 
     steps:
       - name: Checkout Code
@@ -84,7 +84,7 @@ jobs:
   webapp-deploy-sandbox:
     name: 📦 Web App Deploy - Sandbox
     runs-on: ubuntu-latest
-    needs: [build-and-test, code-analysis, code-ql]
+    needs: [build-and-test, code-ql]
     
     steps:
     - name: Download a Build Artifact
