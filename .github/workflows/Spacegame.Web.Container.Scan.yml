@@ -44,6 +44,8 @@ jobs:
       uses: Azure/container-scan@v0
       with:
         image-name: docker.pkg.github.com/srivatsamarichi/tailspin-spacegame-web/tailspinspacegameweb:${{ github.run_number }}
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.CR_PAT }}
         
     - name: Push image
       run: |
