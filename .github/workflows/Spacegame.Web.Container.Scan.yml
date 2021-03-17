@@ -1,0 +1,51 @@
+name: Spacegame.Web.Container.Scan
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  container_scan-build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-16.04, ubuntu-18.04]
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+    
+#    - name: Install Trivy
+#      run: |
+#        #!/bin/bash
+#        sudo apt-get install wget apt-transport-https gnupg lsb-release
+#        wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+#        echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+#        sudo apt-get update
+#        sudo apt-get install trivy
+#        echo $HOME/Library/Caches
+        
+    - name: Build and Tag image
+      run: |
+        docker build -f $GITHUB_WORKSPACE/Tailspin.SpaceGame.Web/Dockerfile -t tailspinspacegameweb:${{ github.run_number }} .
+        #trivy --exit-code 0 --severity MEDIUM,HIGH tailspinspacegameweb:${{ github.run_number }}
+        #docker tag tailspinspacegameweb:${{ github.run_number }} docker.pkg.github.com/srivatsamarichi/tailspin-spacegame-web/tailspinspacegameweb:${{ github.run_number }}
+        docker tag tailspinspacegameweb:${{ github.run_number }} ghcr.io/srivatsamarichi/tailspin-spacegame-web:${{ github.run_number }}
+   
+    - name: Scan image
+      uses: Azure/container-scan@v0
+      with:
+        image-name: docker.pkg.github.com/srivatsamarichi/tailspin-spacegame-web/tailspinspacegameweb:${{ github.run_number }}
+        
+    - name: Push image
+      run: |
+        #docker push docker.pkg.github.com/srivatsamarichi/tailspin-spacegame-web/tailspinspacegameweb:${{ github.run_number }}
+        docker push ghcr.io/srivatsamarichi/tailspin-spacegame-web:${{ github.run_number }}
