@@ -1,4 +1,4 @@
-# Technical details
+# Technical details for Tailspin
 
 ![Code Grade](https://www.code-inspector.com/project/10935/status/svg)<br/>
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1315e116650345da9177b96c327f7901)](https://app.codacy.com/manual/srivatsams/tailspin-spacegame-web?utm_source=github.com&utm_medium=referral&utm_content=srivatsamarichi/tailspin-spacegame-web&utm_campaign=Badge_Grade_Dashboard)<br/>
