@@ -15,5 +15,6 @@ namespace TailSpin.SpaceGame.Web.Models
         // The achievements the player earned.
         [JsonProperty(PropertyName = "achievements")]
         public string[] Achievements { get; set; }
+        
     }
 }
