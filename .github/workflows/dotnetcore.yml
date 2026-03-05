@@ -44,7 +44,7 @@ jobs:
   
   code-analysis:
     name: 🔆 Sonar Qube Code Analysis
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: [build-and-test]
     continue-on-error: true
     steps:
