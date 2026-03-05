@@ -1,15 +1,16 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
-    name: "playground-c97f"
-    labels:
-        app: "playground-c97f"
+  name: playground-c97f
+  labels:
+    app: playground-c97f
 spec:
-    type: LoadBalancer
-    ports:
+  type: LoadBalancer
+  ports:
     - port: 80
       targetPort: 80
       protocol: TCP
       name: http
-    selector:
-        app: "playground-c97f"
+  selector:
+    app: playground-c97f
