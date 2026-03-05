@@ -18,12 +18,6 @@ jobs:
       name: AZURE
       url: https://heyyworld.azurewebsites.net/
     
-    strategy:
-      fail-fast: false
-      matrix:
-        # Supported options are ['csharp', 'cpp', 'go', 'java', 'javascript', 'python']
-        language: ['csharp', 'javascript']
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -94,6 +88,12 @@ jobs:
   code-ql:
     name: ⭕️ CodeQL Security Scanning
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Supported options are ['csharp', 'cpp', 'go', 'java', 'javascript', 'python']
+        language: ['csharp', 'javascript']
+        
     needs: [build-and-test]
     continue-on-error: true
     steps:
